@@ -31,7 +31,9 @@
       top: calc(50% + 30px);
       transform: translate(-50%, -50%);
       color: #ffb6c1;
-      font-size: 2.6em;
+      font-size: 2em;
+      max-width: 80vw;
+      word-wrap: break-word;
       text-align: center;
       opacity: 0;
       line-height: 1.5;
@@ -220,7 +222,7 @@
     function createHeart() {
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      const size = Math.min(canvas.width, canvas.height) / 45; // Responsive sizing
+      const size = Math.min(canvas.width, canvas.height) / 38; // Responsive sizing
       const heartPoints = getHeartShape(cx, cy, size);
       heartPoints.forEach((point, i) => {
         setTimeout(() => {
@@ -282,3 +284,4 @@
   </script>
 </body>
 </html>
+
