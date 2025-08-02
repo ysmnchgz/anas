@@ -28,7 +28,7 @@
       position: absolute;
       left: 50%;
       top: 58%;
-      transform: translateX(-50%); /* Only move left */
+      transform: translateX(-50%);
       color: #ffb6c1;
       font-size: 1.2em;
       text-align: center;
@@ -220,7 +220,7 @@
     function createHeart() {
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      const size = Math.min(canvas.width, canvas.height) / 38; // Responsive sizing
+      const size = Math.min(canvas.width, canvas.height) / 38;
       const heartPoints = getHeartShape(cx, cy, size);
       heartPoints.forEach((point, i) => {
         setTimeout(() => {
@@ -275,7 +275,7 @@
       setTimeout(() => {
         final.style.display = 'block';
       }, 1500);
-    }, 14000); // Increased from 12000 → now gives 2 extra seconds
+    }, 14000);
 
     // Start animation
     animate();
