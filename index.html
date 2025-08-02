@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anas = prout</title>
 
-  <!-- Imports cursive font (plus cute) -->
+  <!-- Cute cursive font -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
   <style>
+    /* Base styling */
     body {
       margin: 0;
       padding: 0;
@@ -19,8 +20,11 @@
 
     canvas {
       display: block;
+      width: 100vw;
+      height: 100vh;
     }
 
+    /* Sweet message */
     .message {
       position: absolute;
       left: 50%;
@@ -48,6 +52,7 @@
       }
     }
 
+    /* Glitch background overlay */
     .glitch-overlay {
       position: fixed;
       top: 0;
@@ -72,6 +77,7 @@
       100% { background-position: 0 0; }
     }
 
+    /* Final image + text */
     .final-image {
       display: none;
       position: fixed;
@@ -108,13 +114,14 @@
 <body>
   <canvas id="canvas"></canvas>
 
+  <!-- Message before glitch -->
   <div class="message">
     T'es beau, t'es fort, t'es capable<br />
     Yasmine (je t'aime)
   </div>
 
+  <!-- Glitch and final text -->
   <div class="glitch-overlay" id="glitchOverlay"></div>
-
   <div class="final-image" id="finalImage">
     <img src="confu.png" alt="confused image" />
     <div class="final-text">Tu fous quoi encore ici?<br />
@@ -182,6 +189,7 @@
     let animationTime = 0;
     let heartFormed = false;
 
+    // Fireworks
     function createFirework(x, y) {
       const count = 30;
       for (let i = 0; i < count; i++) {
@@ -195,6 +203,7 @@
       }
     }
 
+    // Heart shape math
     function getHeartShape(cx, cy, size) {
       const points = [];
       const n = 120;
@@ -207,10 +216,11 @@
       return points;
     }
 
+    // Draw the heart
     function createHeart() {
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      const size = 25;
+      const size = Math.min(canvas.width, canvas.height) / 45; // Responsive sizing
       const heartPoints = getHeartShape(cx, cy, size);
       heartPoints.forEach((point, i) => {
         setTimeout(() => {
@@ -226,6 +236,7 @@
       heartFormed = true;
     }
 
+    // Main animation loop
     function animate() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -253,6 +264,7 @@
       requestAnimationFrame(animate);
     }
 
+    // Timing the ending sequence
     setTimeout(() => {
       document.querySelector('canvas').style.display = 'none';
       document.querySelector('.message').style.display = 'none';
@@ -263,8 +275,9 @@
       setTimeout(() => {
         final.style.display = 'block';
       }, 1500);
-    }, 12000);
+    }, 14000); // Increased from 12000 → now gives 2 extra seconds
 
+    // Start animation
     animate();
   </script>
 </body>
